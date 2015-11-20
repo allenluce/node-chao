@@ -1,0 +1,17 @@
+{
+  "name": "node-chao",
+  "version": "1.0.0",
+  "description": "Javascript implementation of Chaocipher",
+  "main": "chao.js",
+  "scripts": {
+    "test": "mocha",
+    "testmon": "nodemon --exec mocha --growl"
+  },
+  "author": "Allen Luce <aluce@rhythmone.com>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "nodemon": "^1.8.1"
+  }
+}
