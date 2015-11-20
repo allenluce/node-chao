@@ -45,14 +45,13 @@ Chao.prototype.encode = function(text) {
   var converted_text = "";
   for(i in text) {
     var character = text[i];
-    this.last_converted_letter = this.ciphertext_letter_for(character);
-    this.ciphertext_alphabet.permute(this.last_converted_letter, 1);
+    var last_converted_letter = this.ciphertext_letter_for(character);
+    this.ciphertext_alphabet.permute(last_converted_letter, 1);
     this.plaintext_alphabet.permute(character, 2);
-    converted_text += this.last_converted_letter
+    converted_text += last_converted_letter
   }
   return converted_text;
 }
-
   
 Chao.prototype.decode = function(text) {
   this.reinitialize();
@@ -61,10 +60,10 @@ Chao.prototype.decode = function(text) {
   
   for(i in text) {
     var character = text[i];
-    this.last_converted_letter = this.plaintext_letter_for(character);
+    last_converted_letter = this.plaintext_letter_for(character);
     this.ciphertext_alphabet.permute(character, 1);
-    this.plaintext_alphabet.permute(this.last_converted_letter, 2);
-    converted_text += this.last_converted_letter
+    this.plaintext_alphabet.permute(last_converted_letter, 2);
+    converted_text += last_converted_letter
   }
   return converted_text;
 }

@@ -22,7 +22,7 @@ describe("Cipher", function() {
   });
      
   it("is reversible", function() {
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ";
     var ciphertext_alphabet = shuffle(possible);
     var plaintext_alphabet = shuffle(possible);
     console.log(shuffle(possible));

@@ -1,17 +1,28 @@
 {
-  "name": "node-chao",
+  "name": "chao",
   "version": "1.0.0",
-  "description": "Javascript implementation of Chaocipher",
+  "description": "Javascript implementation of the Chaocipher",
   "main": "chao.js",
   "scripts": {
     "test": "mocha",
-    "testmon": "nodemon --exec mocha --growl"
+    "testmon": "nodemon --exec mocha"
   },
-  "author": "Allen Luce <aluce@rhythmone.com>",
+  "author": {
+    "name": "Allen Luce",
+    "email": "allen@npm.con.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/allenluce/node-chai.git"
+  },
+  "author": "Allen Luce allen",
   "license": "UNLICENSED",
   "devDependencies": {
     "chai": "^3.4.1",
     "mocha": "^2.3.4",
     "nodemon": "^1.8.1"
+  },
+  "engines": {
+    "node": ">=2.0.1"
   }
 }
