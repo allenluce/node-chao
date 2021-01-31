@@ -1,6 +1,6 @@
 {
   "name": "chao",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Javascript implementation of the Chaocipher",
   "main": "chao.js",
   "scripts": {
