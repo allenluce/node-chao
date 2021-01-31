@@ -1,43 +1,47 @@
 'use strict'
-/* global describe it before */
+/* eslint-env mocha */
 const expect = require('chai').expect
 const Chao = require('../chao')
 
-const shuffle = function (str) {
-  return str.split('').sort(function () { return 0.5 - Math.random() }).join('')
+String.prototype.shuffle = function (str) { // eslint-disable-line no-extend-native
+  return this.split('').sort(function () { return 0.5 - Math.random() }).join('')
 }
 
 describe('Chaocipher', function () {
   before(function () {
+    const plaintextAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     const ciphertextAlphabet = 'HXUCZVAMDSLKPEFJRIGTWOBNYQ'
-    const plaintextAlphabet = 'PTLNBQDEOYSFAVZKGJRIHWXUMC'
     this.cipher = new Chao(ciphertextAlphabet, plaintextAlphabet)
   })
 
   it('encodes properly', function () {
-    expect(this.cipher.encode('WELLDONEISBETTERTHANWELLSAID')).to.equal('OAHQHCNYNXTSZJRRHJBYHQKSOUJY')
+    expect(this.cipher.encode('WELLDONEISBETTERTHANWELLSAID')).to.equal('BCNSQWDBQSVODMGXUHFSBRWTMMTE')
   })
 
   it('decodes properly', function () {
-    expect(this.cipher.decode('OAHQHCNYNXTSZJRRHJBYHQKSOUJY')).to.equal('WELLDONEISBETTERTHANWELLSAID')
+    expect(this.cipher.decode('BCNSQWDBQSVODMGXUHFSBRWTMMTE')).to.equal('WELLDONEISBETTERTHANWELLSAID')
   })
 
   it('is reversible', function () {
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    const ciphertextAlphabet = shuffle(possible)
-    const plaintextAlphabet = shuffle(possible)
+    const ciphertextAlphabet = possible.shuffle()
+    const plaintextAlphabet = possible.shuffle()
     const cipher = new Chao(ciphertextAlphabet, plaintextAlphabet)
-    const str = shuffle(possible)
-    expect(cipher.decode(cipher.encode(str))).to.equal(str)
+    const str = possible.shuffle()
+    const crypted = cipher.encode(str)
+    expect(crypted).to.not.equal(str)
+    expect(cipher.decode(crypted)).to.equal(str)
   })
 
   it("doesn't touch characters not in the plaintext alphabet", function () {
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    const ciphertextAlphabet = shuffle(possible)
-    const plaintextAlphabet = shuffle(possible)
+    const ciphertextAlphabet = possible.shuffle()
+    const plaintextAlphabet = possible.shuffle()
     const cipher = new Chao(ciphertextAlphabet, plaintextAlphabet)
     const str = 'This is my text!'
-    expect(cipher.encode(str)).to.match(/[A-Za-z0-9]{4} [A-Za-z0-9]{2} [A-Za-z0-9]{2} [A-Za-z0-9]{4}!/)
-    expect(cipher.decode(cipher.encode(str))).to.equal(str)
+    const crypted = cipher.encode(str)
+    expect(crypted).to.not.equal(str)
+    expect(crypted).to.match(/[A-Za-z0-9]{4} [A-Za-z0-9]{2} [A-Za-z0-9]{2} [A-Za-z0-9]{4}!/)
+    expect(cipher.decode(crypted)).to.equal(str)
   })
 })

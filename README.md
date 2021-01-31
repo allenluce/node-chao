@@ -26,14 +26,14 @@ Usage example:
 const Chaocipher = require('chao')
 const assert = require('assert')
 
-const plaintextAlphabet  = "df6nCwtk0F7NoQ4prO1aR5Hcq3xJSMiYB9eVWTL8XAslEzuhmUbygIvKPZDG2j"
-const ciphertextAlphabet = "CLMYN3KWOX6bPEQRgqtn0J4IruH5Bcfv9jkGhm1ZSzyA78iUFwT2slpDaVxedo"
+const plaintextAlphabet = 'df6nCwtk0F7NoQ4prO1aR5Hcq3xJSMiYB9eVWTL8XAslEzuhmUbygIvKPZDG2j'
+const ciphertextAlphabet = 'CLMYN3KWOX6bPEQRgqtn0J4IruH5Bcfv9jkGhm1ZSzyA78iUFwT2slpDaVxedo'
 
 const chao = new Chaocipher(plaintextAlphabet, ciphertextAlphabet)
 
-const input = "Something very important!"
+const input = 'Something very important!'
 const ciphertext = chao.encode(input)
-assert.equal(ciphertext, "X2VP4Y8oF qUNj MqsQlBCdf!")
+assert.equal(ciphertext, 'X2VP4Y8oF qUNj MqsQlBCdf!')
 const recoveredtext = chao.decode(ciphertext)
 assert.equal(recoveredtext, input)
 ```

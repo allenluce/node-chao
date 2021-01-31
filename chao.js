@@ -1,6 +1,6 @@
 'use strict'
 
-String.prototype.rotate = function (rotateAmount) {
+String.prototype.rotate = function (rotateAmount) { // eslint-disable-line no-extend-native
   return this.slice(rotateAmount) + this.slice(0, rotateAmount)
 }
 
@@ -29,11 +29,11 @@ module.exports = class Chao {
   process (text, select) {
     this.reinitialize()
     return text.split('').map(c => {
-      const lastConvertedLetter = this.alphabets[select].data.charAt(this.alphabets[1-select].data.indexOf(c))
+      const lastConvertedLetter = this.alphabets[select].data.charAt(this.alphabets[1 - select].data.indexOf(c))
       // Only convert characters in the source alphabet.
       if (lastConvertedLetter === '') return c
-      this.alphabets[select].permute(lastConvertedLetter, 1+select)
-      this.alphabets[1-select].permute(c, 2-select)
+      this.alphabets[select].permute(lastConvertedLetter, 1 + select)
+      this.alphabets[1 - select].permute(c, 2 - select)
       return lastConvertedLetter
     }).join('')
   }
