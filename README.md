@@ -23,19 +23,19 @@ To install:
 Usage example:
 
 ```javascript
-var Chaocipher = require('chao');
-var assert = require('assert')
+const Chaocipher = require('chao')
+const assert = require('assert')
 
-var plaintext_alphabet  = "df6nCwtk0F!7NoQ4prO1aR5Hcq3xJSMiYB9eVWTL8XAslEzuhmUbygIvKPZDG2j";
-var ciphertext_alphabet = "CLMYN3KWOX6bPEQRgqtn0J4IruH5Bcfv9jkGhm1ZSzyA78iUFwT2!slpDaVxedo";
+const plaintextAlphabet  = "df6nCwtk0F7NoQ4prO1aR5Hcq3xJSMiYB9eVWTL8XAslEzuhmUbygIvKPZDG2j"
+const ciphertextAlphabet = "CLMYN3KWOX6bPEQRgqtn0J4IruH5Bcfv9jkGhm1ZSzyA78iUFwT2slpDaVxedo"
 
-var chao = new Chaocipher(plaintext_alphabet, ciphertext_alphabet);
+const chao = new Chaocipher(plaintextAlphabet, ciphertextAlphabet)
 
-var input = "Something very important!";
-var ciphertext = chao.encode(input);
-console.log(ciphertext);
-var recoveredtext = chao.decode(ciphertext);
-assert.equal(recoveredtext, input);
+const input = "Something very important!"
+const ciphertext = chao.encode(input)
+assert.equal(ciphertext, "X2VP4Y8oF qUNj MqsQlBCdf!")
+const recoveredtext = chao.decode(ciphertext)
+assert.equal(recoveredtext, input)
 ```
 
 The code is largely based on https://github.com/aprescott/chaocipher
